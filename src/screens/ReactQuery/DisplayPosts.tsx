@@ -22,7 +22,7 @@ const DisplayPosts = () => {
     return (<Text>Error fetching posts!</Text>);
   }
 
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (<Text key={item.id}>{item.title}</Text>);
   };
 
@@ -34,9 +34,21 @@ const DisplayPosts = () => {
     );
   }
 
-  const top5Posts = posts.slice(0,5);
+  // const top5Posts = posts.slice(0, 5);
 
-  return (<FlatList data={posts} renderItem={renderItem} ListFooterComponent={endComponent} contentContainerStyle={{ paddingBottom: 100 }} />);
+  return (
+    <>
+      {
+        posts.length &&
+        <FlatList
+          data={posts}
+          renderItem={renderItem}
+          ListFooterComponent={endComponent}
+          contentContainerStyle={{ paddingBottom: 100 }}
+        />
+      }
+    </>
+  );
 
   // return (
   //   // <View style={{ marginBottom: 4, borderColor: 'blue', borderWidth: 1, padding: 0, flex: 1, flexDirection: "row", flexWrap: "wrap"}}>
@@ -46,7 +58,7 @@ const DisplayPosts = () => {
   //       })
   //     } */}
 
-      
+
   //   // </View>
   // );
 };
