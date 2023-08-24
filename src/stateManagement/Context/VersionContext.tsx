@@ -8,6 +8,7 @@ import reducer, { initialState } from "./reducers";
 
 export const RestaurantContext = createContext();
 
+// React example: https://react.dev/learn/managing-state
 const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
