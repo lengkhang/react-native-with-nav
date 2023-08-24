@@ -9,35 +9,35 @@ import reducer from "./reducers";
 
 const store = createStore(reducer);
 
-const ConnectedResults = connect(
-  state => {
-    return {
-      rating: state.rating,
-      price: state.price
-    };
-  }, null
-)(Results);
+// const ConnectedResults = connect(
+//   state => {
+//     return {
+//       rating: state.rating,
+//       price: state.price
+//     };
+//   }, null
+// )(Results);
 
-const ConnectedFilters = connect(
-  state => {
-    return {
-      rating: state.rating,
-      price: state.price
-    };
-  }, dispatch => {
-    return {
-      setRating: (value: number) => dispatch({ type: actions.SET_RATING, value }),
-      setPrice: (value: number) => dispatch({ type: actions.SET_PRICE, value }),
-      reset: () => dispatch({ type: actions.RESET })
-    };
-  }
-)(Filters);
+// const ConnectedFilters = connect(
+//   state => {
+//     return {
+//       rating: state.rating,
+//       price: state.price
+//     };
+//   }, dispatch => {
+//     return {
+//       setRating: (value: number) => dispatch({ type: actions.SET_RATING, value }),
+//       setPrice: (value: number) => dispatch({ type: actions.SET_PRICE, value }),
+//       reset: () => dispatch({ type: actions.RESET })
+//     };
+//   }
+// )(Filters);
 
 const VersionRedux = () => {
   return (
     <Provider store={store}>
-      <ConnectedFilters />
-      <ConnectedResults />
+      <Filters />
+      <Results />
     </Provider>
   )
 }
