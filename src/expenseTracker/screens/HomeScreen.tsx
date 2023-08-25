@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { Pressable, SectionList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootContext } from "../ContextProvider";
@@ -33,7 +33,7 @@ const HomeScreen = () => {
     return sum += current.amount;
   }, 0);
 
-  const sectionsData = expenses.reduce((acc, current) => {
+  const sectionsData = useMemo(() => expenses.reduce((acc, current) => {
     const { id, date, type, description, amount } = current;
 
     const foundSectionIndex = acc.findIndex(section => section.title === current.date);
@@ -50,7 +50,7 @@ const HomeScreen = () => {
     }
 
     return acc;
-  }, []);
+  }, []), [expenses]);
 
   sectionsData.sort((a, b) => {
     return b.title > a.title ? 1 : -1;
